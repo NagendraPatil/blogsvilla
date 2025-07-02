@@ -22,16 +22,28 @@
                 <%= blog.createdBy.fullname %>
             </div>
             <div class="container mt-3">
-                <h1>Comments</h1>
-                <% if (locals.user) { %>
-                    <form action="/comment/<%= blog._id %>">
-                        <div class="mb-3">
-                            <input type="text" class="form-control" id="content" aria-describedby="content"
-                                name="content" placeholder="Write your comment...">
+                <h1>Comments (<%= comments.length %>)</h1>
+                <% comments.forEach(comment=> { %>
+                    <div class="container m-1 border rounded">
+                        <div class="m-1">
+                            <img src="<%= comment.createdBy.pfpURL %>" alt="user-icon" style="height: 30px;">
+                            <%= comment.createdBy.fullname %>
                         </div>
-                        <button type="submit" class="btn btn-primary">Add</button>
-                    </form>
-                    <% } %>
+                        <div class="mt-1 ml-2 text-secondary">
+                            <%= comment.content %>
+                        </div>
+                    </div>
+
+                    <% }) %>
+                        <% if (locals.user) { %>
+                            <form action="/blog/comment/<%= blog._id %>" method="post">
+                                <div class="mb-3">
+                                    <input type="text" class="form-control" id="content" aria-describedby="content"
+                                        name="content" placeholder="Write your comment...">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Add</button>
+                            </form>
+                            <% } %>
             </div>
         </div>
 

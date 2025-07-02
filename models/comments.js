@@ -8,7 +8,7 @@ const CommentSchema = new Schema({
   createdBy: {
     type: Schema.Types.ObjectId,
     ref: "User",
-    requiredtrue,
+    required: true,
   },
 });
 
