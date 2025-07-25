@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const path = require("path");
 const userRouter = require("./routes/user");
@@ -9,12 +10,12 @@ const {
 } = require("./middlewares/authentication");
 const Blogs = require("./models/blog").Blog;
 
-mongoose.connect("mongodb://localhost:27017/blogsvilla").then(() => {
+mongoose.connect(process.env.MONGO_URL).then(() => {
   console.log("mongoDB connected!");
 });
 
 const app = express();
-const PORT = 8000;
+const PORT = process.env.PORT || 8000;;
 
 app.use(express.urlencoded({ extended: false }));
 app.set("view engine", "ejs");
