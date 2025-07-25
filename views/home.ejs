@@ -10,10 +10,10 @@
     <%- include('./partials/nav.ejs') %>
 
         <div class="container mt-3">
-            <div class="row row-cols-4"> 
+            <div class="row row-cols-4 gap-2 align-items-start justify-content-center"> 
                 <% blogs.forEach(blog=> { %>
-                    <div class="card col ml-1 mt-2">
-                        <img src="<%= blog.coverImageURL %>" class="card-img-top" alt="..." style="width: 100%;height: 400px;">
+                    <div class="card col">
+                        <img src="<%= blog.coverImageURL %>" class="card-img-top mt-2" alt="..." style="width: 100%;height: 400px;">
                         <div class="card-body">
                             <h5 class="card-title">
                                 <%= blog.title %>
